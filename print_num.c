@@ -6,11 +6,11 @@
 /*   By: eagranat <eagranat@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:19:40 by eagranat          #+#    #+#             */
-/*   Updated: 2024/02/23 18:38:31 by eagranat         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:19:40 by eagranat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	print_unsigned(unsigned int n)
 {
@@ -39,11 +39,11 @@ int	print_int(int n)
 
 	count = 0;
 	if (n == -2147483648)
-		count += write(1, "-2147483648", 11);
-	if (n < 0 && n != -2147483648)
+		return (write(1, "-2147483648", 11));
+	if (n < 0 && n)
 	{
 		count += write(1, "-", 1);
-		n = -n;
+		count += print_int(-n);
 	}
 	else if (n >= 10)
 	{

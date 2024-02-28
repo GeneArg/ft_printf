@@ -6,25 +6,31 @@
 /*   By: eagranat <eagranat@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:42:12 by eagranat          #+#    #+#             */
-/*   Updated: 2024/02/23 19:09:55 by eagranat         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:19:32 by eagranat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	print_char(char c)
 {
 	int	count;
-	
+
 	count = 0;
 	count += write(1, &c, 1);
 	return (count);
 }
+
 int	print_string(char *s)
 {
 	int	count;
 
 	count = 0;
+	if (!s)
+	{
+		count += write(1, "(null)", 6);
+		return (count);
+	}
 	while (*s)
 		count += write(1, s++, 1);
 	return (count);
@@ -87,55 +93,4 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(ap);
 	return (count);
-}
-
-int main()
-{
-	int a = 42;
-    int *p = &a;
-    int **pp = &p;
-
-    ft_printf("");
-    printf("");
-	printf("--------------------\n");
-    //ft_printf("%i\n", INT_MAX);
-    //printf("%i\n", INT_MAX);
-	//printf("--------------------\n");
-    //ft_printf("%d\n", INT_MIN);
-    //printf("%d\n", INT_MIN);
-	//printf("--------------------\n");
-    ft_printf("%s\n", "Hello, \nWorld!");
-    printf("%s\n", "Hello, \nWorld!");
-	printf("--------------------\n");
-    ft_printf("%s\n", "Hello, %s\n");
-    printf("%s\n", "Hello, %s\n");
-	printf("--------------------\n");
-    ft_printf("Hello, %s. The answer is %d.\n", "World", 42);
-    printf("Hello, %s. The answer is %d.\n", "World", 42);
-	printf("--------------------\n");
-    ft_printf("%p\n", &printf);
-    printf("%p\n", &printf);
-	printf("--------------------\n");
-    ft_printf("%p\n", pp);
-    printf("%p\n", pp);
-	printf("--------------------\n");
-    ft_printf("Hello, %%\n");
-    printf("Hello, %%\n");
-	printf("--------------------\n");
-	ft_printf("%x\n", 42);
-	printf("%x\n", 42);
-	printf("--------------------\n");
-	ft_printf("%X\n", 42);
-	printf("%X\n", 42);
-	printf("--------------------\n");
-	ft_printf("%u\n", -42);
-	printf("%u\n", -42);
-	printf("--------------------\n");
-	ft_printf("%c\n", 'c');
-	printf("%c\n", 'c');
-	printf("--------------------\n");
-	ft_printf("%d\n", 000000);
-	printf("%d\n", 000000);
-
-    return 0;
 }
