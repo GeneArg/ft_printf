@@ -1,20 +1,22 @@
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+
 SRC = ft_printf.c print_num.c
 
 OBJ = $(SRC:.c=.o)
 
+HEADER = ft_printf.h
+
 NAME = libftprintf.a
 
-CC = cc
-
-CFLAGS = -Wall -Wextra -Werror
-
-all: $(NAME) Makefile
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	${AR} ${ARFLAGS} ${NAME} ${OBJ}
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
-%.o: %.c ft_printf.h
-	${CC} ${CFLAGS} -c $< -o $@
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
