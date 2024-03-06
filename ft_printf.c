@@ -6,7 +6,7 @@
 /*   By: eagranat <eagranat@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:42:12 by eagranat          #+#    #+#             */
-/*   Updated: 2024/02/28 12:20:17 by eagranat         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:10:03 by eagranat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	print_pointer(void *p)
 	int	count;
 
 	count = 0;
+	if (p == 0)
+		return (write(1, "(nil)", 5));
 	count += write(1, "0x", 2);
 	count += print_hex((unsigned long long)p, 0);
 	return (count);
@@ -94,3 +96,39 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (count);
 }
+
+// int main()
+// {
+//     int a = 42;
+//     int *p = &a;
+//     int **pp = &p;
+// 	char *s = 0;
+
+//     int ret1, ret2;
+
+//     ret1 = ft_printf("%p\n", NULL);
+//     ret2 = printf("%p\n", NULL);
+//     printf("ft_printf returned: %d, printf returned: %d\n", ret1, ret2);
+
+//     ret1 = ft_printf("%p\n", &printf);
+//     ret2 = printf("%p\n", &printf);
+//     printf("ft_printf returned: %d, printf returned: %d\n", ret1, ret2);
+
+//     ret1 = ft_printf("%p\n", pp);
+//     ret2 = printf("%p\n", pp);
+//     printf("ft_printf returned: %d, printf returned: %d\n", ret1, ret2);
+
+//     ret1 = ft_printf("%p\n", p);
+//     ret2 = printf("%p\n", p);
+//     printf("ft_printf returned: %d, printf returned: %d\n", ret1, ret2);
+
+// 	ret1 = ft_printf("%p\n", s);
+// 	ret2 = printf("%p\n", s);
+// 	printf("ft_printf returned: %d, printf returned: %d\n", ret1, ret2);
+
+// 	ret1 = ft_printf("%s\n", s);
+// 	ret2 = printf("%s\n", s);
+// 	printf("ft_printf returned: %d, printf returned: %d\n", ret1, ret2);
+
+//     return 0;
+// }
